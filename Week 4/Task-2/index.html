@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <style>
+      form{
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      input{
+        width: 40px;
+        height: 40px;
+      }
+      .btn{
+        width: auto;
+        height: auto;
+        margin-top: 10px;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
+</head>
+<body>
+    <form>
+      <fieldset>
+        <legend>Find Sum</legend>
+        <input type="text" name="num1" id="num1" placeholder="0">
+        <span>+</span>
+        <input type="text" name="num2" id="num2" placeholder="0">
+        <span>=</span>
+        <input type="text" name="result" id="result" disabled placeholder="0">
+        <br>
+        <input type="button" value="ADD" class="btn" onclick="calculateSum()">
+      </fieldset>
+    </form>
+</body>
+<script>
+  function calculateSum() {
+    num1 = document.getElementById('num1').value;
+    num2 = document.getElementById('num2').value;
+    result = document.getElementById('result');
+
+    result.value = parseInt(num1) + parseInt(num2);
+  }
+</script>
+</html>
