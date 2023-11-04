@@ -4,8 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 1</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-role{
+            height: 80px;
+            width: 80px;
+            border-radius: 40px;
+        }
+        img{
+            height: 300px;
+        }
+        .number-div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            width: 300px;
+            font-size: 200px;
+            position: fixed;
+        }
+    </style>
 </head>
 <body>
-    
+    <img src="dice.gif" alt="" id="gif-dice" data-animated="false">
+    <div class="number-div">
+        5
+    </div>
+    <input type="button" value="Roll Dice" class="btn-role">
 </body>
+<script>
+    const btn = document.querySelector('.btn-role');
+    const numDiv = document.querySelector('.number-div');
+    const gif = document.querySelector('#gif-dice');
+
+    btn.addEventListener("click", ()=>{
+        gif.style.opacity = '0';
+        numDiv.style.display = 'flex';
+        ranNum = Math.floor(Math.random() * 6) + 1;
+        numDiv.innerHTML = ranNum;
+        setTimeout(() => {
+            gif.style.opacity = '1';
+            numDiv.style.display = 'none';
+        }, 1000);
+    })
+</script>
 </html>
