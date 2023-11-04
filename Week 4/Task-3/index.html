@@ -3,9 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task 1</title>
+    <title>Task 3</title>
+    <style>
+        input{
+            display: block;
+            margin: 10px;
+            background-color: rgb(207, 152, 152);
+        }
+        .inp-div{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .btn-final{
+            background-color: rgb(44, 29, 29);
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <form>
+        <div class="inp-div">
+            Principle Amount
+            <input type="number" name="pAmt" id="pAmt" min="0" max="">
+            Rate of interest
+            <input type="number" name="intrest" id="intrest" min="0" max="">
+            Period in Months
+            <input type="number" name="months" id="months" min="0" max="">
+            <input type="text" name="result" id="result" disabled>
+            <input type="button" value="Calculate EMI" class="btn-final">
+        </div>
+    </form>
 </body>
+<script>
+    document.querySelector('.btn-final').addEventListener("click", ()=>{
+        loanAmount = parseFloat(document.querySelector('#pAmt').value);
+        interestRate = parseFloat(document.querySelector('#intrest').value) / 100 / 12;
+        loanTenure = parseFloat(document.querySelector('#months').value);
+        if (interestRate === 0) {
+                emi = loanAmount / loanTenure;
+            } else {
+                emi = loanAmount * interestRate * (Math.pow(1 + interestRate, loanTenure)) / (Math.pow(1 + interestRate, loanTenure) - 1);
+        }
+        document.querySelector('#result').value = emi.toFixed(2);
+    })
+</script>
 </html>

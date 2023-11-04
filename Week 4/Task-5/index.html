@@ -6,6 +6,40 @@
     <title>Task 1</title>
 </head>
 <body>
-    
+    <table class="table-class">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </table>
 </body>
+<script>
+    htmlCode = ``
+    fetch('person.json')
+        .then(res => res.json())
+        .then(data => {
+            // data.forEach(element => {
+            //     htmlCode += `
+            //         <tr>
+            //             <td>${element.name}</td>
+            //             <td>${element.age}</td>
+            //         </tr>
+            //     `
+            // });
+            // document.querySelector('.table-class').innerHTML += htmlCode;
+            i = 0;
+            intervalId = setInterval(() => {
+                document.querySelector('.table-class')
+                    .innerHTML += 
+                        `<tr>
+                           <td>${data[i].name}</td>
+                           <td>${data[i].age}</td>
+                         </tr>`;
+                i = i+1;
+                if(i == data.length){
+                    clearInterval(intervalId);
+                }
+            }, 500);
+        })
+</script>
 </html>
